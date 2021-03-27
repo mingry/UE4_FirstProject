@@ -26,9 +26,11 @@ public:
 	UPROPERTY()
 	USceneComponent* root;
 
-	//UPROPERTY(EditAnywhere)
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* mesh1;
+
+	UPROPERTY(EditAnywhere)
+	float speed;
 
 	float time;
 };

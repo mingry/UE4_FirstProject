@@ -14,19 +14,19 @@ AMyActor::AMyActor()
 
 	mesh1 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MyMesh1"));
 
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("StaticMesh'/Game/H/Helecopter.Helecopter'"));
-	if (MeshAsset.Succeeded()) {
-		UStaticMesh* Asset = MeshAsset.Object;
-		mesh1->SetStaticMesh(Asset);
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> HeliAsset(TEXT("StaticMesh'/Game/H/Helecopter.Helecopter'"));
+
+	if (HeliAsset.Succeeded()) {
+		UStaticMesh* m = HeliAsset.Object;
+		mesh1->SetStaticMesh(m);
 	}
 	else {
-		UE_LOG(LogTemp, Warning, TEXT("Fail"));
+		UE_LOG(LogTemp, Warning, TEXT("HeliAsset Fail"));
 	}
 
 	mesh1->AttachTo(root);
 
-
-	time = 0.0f;
+	speed = 1.0f;
 }
 
 // Called when the game starts or when spawned
@@ -35,7 +35,7 @@ void AMyActor::BeginPlay()
 	Super::BeginPlay();
 
 
-	
+	time = 0.0f;
 }
 
 // Called every frame
@@ -45,6 +45,8 @@ void AMyActor::Tick(float DeltaTime)
 
 	time += DeltaTime;
 
-	mesh1->SetRelativeLocation({ 0.f, 0.f, FMath::Sin(time) * 100 });
+	FVector p(0.f, 0.f, FMath::Sin(speed*time)*100.0f);
+
+	mesh1->SetRelativeLocation(p);
 }
 
