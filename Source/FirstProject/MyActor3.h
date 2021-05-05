@@ -19,7 +19,8 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	virtual bool ShouldTickIfViewportsOnly() const override;
-
+	FTransform GetSplineIterp(float t);
+	
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -44,6 +45,11 @@ public:
 
 
 	UPROPERTY(EditAnywhere)
+		UInstancedStaticMeshComponent* inst_mesh1;
+
+
+
+	UPROPERTY(EditAnywhere)
 		float t0;
 
 	UPROPERTY(EditAnywhere)
@@ -59,6 +65,7 @@ public:
 		AActor* camera_actor;
 
 	FVector heli_to_cam;
+
 
 	float time;
 };
