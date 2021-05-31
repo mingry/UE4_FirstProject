@@ -1,13 +1,10 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "MyActor5.h"
 #include "DrawDebugHelpers.h"
 
 // Sets default values
 AMyActor5::AMyActor5()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	root = CreateDefaultSubobject<USceneComponent>(TEXT("MyRoot"));
@@ -55,7 +52,7 @@ void AMyActor5::Tick(float DeltaTime)
 
 	FVector f_mesh1(0.f, 0.f, 1480.0f);
 	FVector f_mesh2(0.f, 0.f, 1280.0f);
-	FVector f_mesh3(0.f, 0.f, 1680.0f); 
+	FVector f_mesh3(0.f, 0.f, 1680.0f);
 
 
 	if ((int)time % 2 == 0) {
@@ -66,7 +63,6 @@ void AMyActor5::Tick(float DeltaTime)
 
 
 	FVector v_mesh3 = mesh3->GetComponentVelocity();
-	
+
 	UE_LOG(LogTemp, Warning, TEXT("%fs, vel=%s"), time, *(v_mesh3.ToString()));
 }
-
